@@ -1,0 +1,12 @@
+services:
+  fuwari:
+    build: ./fuwari
+    container_name: docker_fuwari_with_outbound_repo
+    restart: always
+    env_file:
+      - .env_file
+    ports:
+      - "9000:9000"   # Webhook listen port
+    volumes:  # please modify.
+      - /mnt/fuwari/keys:/root/.ssh
+      - /mnt/fuwari/deploy:/fuwari
